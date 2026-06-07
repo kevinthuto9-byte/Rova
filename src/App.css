@@ -1,0 +1,402 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f5f5;
+  color: #0a0a0a;
+  max-width: 390px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  background: white;
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.screen {
+  padding: 24px;
+}
+
+/* HOME WITH MAP */
+.home-screen {
+  padding: 0;
+  position: relative;
+  height: calc(100vh - 80px);
+}
+
+.map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.home-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 24px 24px 0 0;
+  padding: 24px;
+  z-index: 2;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+}
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.home-header h1 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: #0a0a0a;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f5f5f5;
+  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.search-box span {
+  color: #999;
+  font-size: 15px;
+}
+
+.quick-destinations {
+  display: flex;
+  gap: 12px;
+}
+
+.destination-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.dest-icon {
+  font-size: 20px;
+}
+
+.destination-item strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.destination-item p {
+  font-size: 11px;
+  color: #999;
+}
+
+/* BOOKING */
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.booking-screen h2 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.input-group {
+  background: #f5f5f5;
+  border-radius: 16px;
+  padding: 8px 16px;
+  margin-bottom: 24px;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot.green { background: #4ade80; }
+.dot.black { background: #0a0a0a; }
+
+.input-row input {
+  background: none;
+  border: none;
+  font-size: 15px;
+  width: 100%;
+  outline: none;
+}
+
+.input-divider {
+  height: 1px;
+  background: #e0e0e0;
+  margin-left: 24px;
+}
+
+.fare-estimate {
+  background: #f5f5f5;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.fare-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.vehicle-types {
+  margin-bottom: 24px;
+}
+
+.vehicle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.vehicle-card {
+  border: 2px solid #eee;
+  border-radius: 12px;
+  padding: 16px 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.vehicle-card.active {
+  border-color: #0a0a0a;
+}
+
+.vehicle-card span {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.vehicle-card p {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.vehicle-card small {
+  font-size: 12px;
+  color: #666;
+}
+
+.confirm-btn {
+  width: 100%;
+  background: #0a0a0a;
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* SEARCHING */
+.searching-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.searching-content {
+  text-align: center;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #eee;
+  border-top-color: #0a0a0a;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 24px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.searching-content h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.searching-content p {
+  color: #666;
+  margin-bottom: 32px;
+}
+
+/* DRIVER FOUND */
+.driver-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.driver-card { width: 100%; }
+
+.driver-card h2 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.driver-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #f5f5f5;
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.driver-avatar {
+  width: 56px;
+  height: 56px;
+  background: #0a0a0a;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.driver-info strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.driver-info p {
+  font-size: 13px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.eta {
+  background: #0a0a0a;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.contact-btn {
+  width: 100%;
+  background: #f5f5f5;
+  border: none;
+  padding: 16px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.cancel-btn {
+  width: 100%;
+  background: none;
+  border: 2px solid #eee;
+  padding: 16px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #666;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 390px;
+  background: white;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  z-index: 100;
+}
+
+.nav-item {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.nav-item span {
+  font-size: 11px;
+  color: #999;
+}
+
+.nav-item.active span {
+  color: #0a0a0a;
+  font-weight: 600;
+}
