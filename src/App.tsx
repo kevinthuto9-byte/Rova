@@ -1,207 +1,201 @@
-import { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-import './App.css';
-
-// Gaborone coordinates
-const position: [number, number] = [-24.6541, 25.9087];
-
-type Screen = 'home' | 'booking' | 'searching' | 'driver-found';
+import './App.css'
 
 export default function App() {
-  const [screen, setScreen] = useState<Screen>('home');
-  const [pickup, setPickup] = useState('');
-  const [dropoff, setDropoff] = useState('');
-
-  // Fix Leaflet default marker icons (runs once)
-  useEffect(() => {
-    delete (L.Icon.Default.prototype as any)._getIconUrl;
-    L.Icon.Default.mergeOptions({
-      iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-    });
-  }, []);
-
-  const goTo = (newScreen: Screen) => setScreen(newScreen);
-
   return (
     <div className="app">
-      {/* ==================== HOME SCREEN ==================== */}
-      {screen === 'home' && (
-        <div className="screen home-screen">
-          <div className="map-container">
-            <MapContainer
-              center={position}
-              zoom={13}
-              style={{ height: '100%', width: '100%' }}
-              zoomControl={false}
-            >
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; OpenStreetMap contributors'
-              />
-              <Marker position={position}>
-                <Popup>You are here</Popup>
-              </Marker>
-            </MapContainer>
+
+      <nav>
+        <div className="logo">Rova</div>
+        <div className="nav-links">
+          <a href="#">Ride</a>
+          <a href="#">Drive</a>
+          <a href="#">About</a>
+        </div>
+        <button className="nav-btn">Get Started</button>
+      </nav>
+
+      <section className="hero">
+        <h1>Your ride,<br />your way.</h1>
+        <p>Safe, affordable rides available anytime — wherever you are in the world.</p>
+        <div className="hero-buttons">
+          <button className="btn-primary">Request a Ride</button>
+          <button className="btn-secondary">Become a Driver</button>
+        </div>
+      </section>
+
+      <section className="stats">
+        <div className="stat-item">
+          <h3>50,000+</h3>
+          <p>Rides completed</p>
+        </div>
+        <div className="stat-item">
+          <h3>120+</h3>
+          <p>Cities covered</p>
+        </div>
+        <div className="stat-item">
+          <h3>4.9★</h3>
+          <p>Average rating</p>
+        </div>
+        <div className="stat-item">
+          <h3>10,000+</h3>
+          <p>Active drivers</p>
+        </div>
+      </section>
+
+      <section className="features">
+        <h2>Why choose Rova?</h2>
+        <div className="features-grid">
+          <div className="feature-card">
+            <span className="icon">🛡️</span>
+            <h3>Safe & Verified</h3>
+            <p>Every driver is background checked and verified before they can drive on Rova.</p>
           </div>
-
-          <div className="home-overlay">
-            <div className="home-header">
-              <h1>Rova</h1>
-              <div className="avatar">KM</div>
-            </div>
-
-            <div className="search-box" onClick={() => goTo('booking')}>
-              <div className="search-icon">📍</div>
-              <span>Where are you going?</span>
-            </div>
-
-            <div className="quick-destinations">
-              <div className="destination-item" onClick={() => goTo('booking')}>
-                <div className="dest-icon">🏠</div>
-                <div>
-                  <strong>Home</strong>
-                  <p>Gaborone West</p>
-                </div>
-              </div>
-              <div className="destination-item" onClick={() => goTo('booking')}>
-                <div className="dest-icon">💼</div>
-                <div>
-                  <strong>Work</strong>
-                  <p>Main Mall, Gaborone</p>
-                </div>
-              </div>
-            </div>
+          <div className="feature-card">
+            <span className="icon">⚡</span>
+            <h3>Fast Pickup</h3>
+            <p>Get matched with a nearby driver in seconds. No waiting, no hassle.</p>
+          </div>
+          <div className="feature-card">
+            <span className="icon">💰</span>
+            <h3>Fair Pricing</h3>
+            <p>Transparent prices with no hidden fees. Know your fare before you ride.</p>
+          </div>
+          <div className="feature-card">
+            <span className="icon">🌍</span>
+            <h3>Available Worldwide</h3>
+            <p>From Gaborone to Lagos to Nairobi — Rova is expanding across the globe.</p>
           </div>
         </div>
-      )}
+      </section>
 
-      {/* ==================== BOOKING SCREEN ==================== */}
-      {screen === 'booking' && (
-        <div className="screen booking-screen">
-          <button className="back-btn" onClick={() => goTo('home')}>
-            ← Back
-          </button>
-
-          <h2>Book a ride</h2>
-
-          <div className="input-group">
-            <div className="input-row">
-              <span className="dot green"></span>
-              <input
-                type="text"
-                placeholder="Pickup location"
-                value={pickup}
-                onChange={(e) => setPickup(e.target.value)}
-              />
-            </div>
-            <div className="input-divider"></div>
-            <div className="input-row">
-              <span className="dot black"></span>
-              <input
-                type="text"
-                placeholder="Drop-off location"
-                value={dropoff}
-                onChange={(e) => setDropoff(e.target.value)}
-              />
-            </div>
+      <section className="how-it-works">
+        <h2>How it works</h2>
+        <div className="steps">
+          <div className="step">
+            <div className="step-number">01</div>
+            <h3>Enter your destination</h3>
+            <p>Open the app and type where you want to go.</p>
           </div>
-
-          <div className="fare-estimate">
-            <div className="fare-row">
-              <span>Estimated fare</span>
-              <strong>BWP 45</strong>
-            </div>
-            <div className="fare-row">
-              <span>Estimated time</span>
-              <strong>15 mins</strong>
-            </div>
-            <div className="fare-row">
-              <span>Distance</span>
-              <strong>5.2 km</strong>
-            </div>
+          <div className="step">
+            <div className="step-number">02</div>
+            <h3>Get matched instantly</h3>
+            <p>We find the nearest available driver for you.</p>
           </div>
-
-          <div className="vehicle-types">
-            <div className="vehicle-grid">
-              <div className="vehicle-card active">
-                <span>🚗</span>
-                <p>Economy</p>
-                <small>BWP 25</small>
-              </div>
-              <div className="vehicle-card">
-                <span>🚙</span>
-                <p>Standard</p>
-                <small>BWP 40</small>
-              </div>
-              <div className="vehicle-card">
-                <span>⭐</span>
-                <p>Premium</p>
-                <small>BWP 80</small>
-              </div>
-            </div>
-          </div>
-
-          <button className="confirm-btn" onClick={() => goTo('searching')}>
-            Confirm Ride — BWP 45
-          </button>
-        </div>
-      )}
-
-      {/* ==================== SEARCHING SCREEN ==================== */}
-      {screen === 'searching' && (
-        <div className="screen searching-screen">
-          <div className="searching-content">
-            <div className="spinner"></div>
-            <h2>Finding your driver...</h2>
-            <p>Looking for nearby drivers</p>
-            <button className="cancel-btn" onClick={() => goTo('home')}>
-              Cancel
-            </button>
+          <div className="step">
+            <div className="step-number">03</div>
+            <h3>Ride and pay easily</h3>
+            <p>Enjoy your ride and pay seamlessly in the app.</p>
           </div>
         </div>
-      )}
+      </section>
 
-      {/* ==================== DRIVER FOUND SCREEN ==================== */}
-      {screen === 'driver-found' && (
-        <div className="screen driver-screen">
-          <div className="driver-card">
-            <h2>Driver found!</h2>
-            <div className="driver-info">
-              <div className="driver-avatar">JM</div>
+      <section className="testimonials">
+        <h2>What riders say</h2>
+        <div className="testimonials-grid">
+          <div className="testimonial-card">
+            <p>"Rova is the best ride app I have used. Fast, affordable and the drivers are always professional."</p>
+            <div className="testimonial-author">
+              <div className="avatar">TM</div>
               <div>
-                <strong>James M.</strong>
-                <p>⭐ 4.9 • Toyota Corolla</p>
-                <p>Plate: B 123 GP</p>
+                <strong>Thabo M.</strong>
+                <span>Gaborone, Botswana</span>
               </div>
             </div>
-            <div className="eta">Arriving in 3 mins</div>
-            <button className="contact-btn">📞 Contact Driver</button>
-            <button className="cancel-btn" onClick={() => goTo('home')}>
-              Cancel Ride
-            </button>
+          </div>
+          <div className="testimonial-card">
+            <p>"I use Rova every day to get to work. Never been late since I started using it. Highly recommend!"</p>
+            <div className="testimonial-author">
+              <div className="avatar">AN</div>
+              <div>
+                <strong>Amara N.</strong>
+                <span>Lagos, Nigeria</span>
+              </div>
+            </div>
+          </div>
+          <div className="testimonial-card">
+            <p>"Finally a ride app that actually works in my city. The pricing is fair and transparent."</p>
+            <div className="testimonial-author">
+              <div className="avatar">SK</div>
+              <div>
+                <strong>Sarah K.</strong>
+                <span>Nairobi, Kenya</span>
+              </div>
+            </div>
           </div>
         </div>
-      )}
+      </section>
 
-      {/* Bottom Navigation */}
-      <div className="bottom-nav">
-        <button className="nav-item active">
-          🏠<span>Home</span>
-        </button>
-        <button className="nav-item">
-          🗺️<span>Trips</span>
-        </button>
-        <button className="nav-item">
-          💳<span>Wallet</span>
-        </button>
-        <button className="nav-item">
-          👤<span>Profile</span>
-        </button>
-      </div>
+      <section className="driver-section">
+        <div className="driver-content">
+          <h2>Drive with Rova.<br />Earn on your terms.</h2>
+          <p>Set your own hours, be your own boss. Join thousands of drivers already earning with Rova.</p>
+          <button className="btn-primary">Start Driving</button>
+        </div>
+        <div className="driver-stats">
+          <div className="stat">
+            <h3>BWP 5,000+</h3>
+            <p>Average monthly earnings</p>
+          </div>
+          <div className="stat">
+            <h3>Flexible</h3>
+            <p>Work whenever you want</p>
+          </div>
+          <div className="stat">
+            <h3>Weekly</h3>
+            <p>Fast payouts to your account</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="safety">
+        <div className="safety-content">
+          <h2>Your safety is our priority</h2>
+          <p>Every ride on Rova is designed with your safety in mind.</p>
+          <div className="safety-items">
+            <div className="safety-item">
+              <span>✓</span>
+              <p>Real-time trip tracking shared with loved ones</p>
+            </div>
+            <div className="safety-item">
+              <span>✓</span>
+              <p>24/7 emergency support button in the app</p>
+            </div>
+            <div className="safety-item">
+              <span>✓</span>
+              <p>All drivers verified with background checks</p>
+            </div>
+            <div className="safety-item">
+              <span>✓</span>
+              <p>Cashless payments — no need to carry cash</p>
+            </div>
+            <div className="safety-item">
+              <span>✓</span>
+              <p>Two-way ratings system keeps everyone accountable</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="download">
+        <h2>Get the Rova app</h2>
+        <p>Available on iOS and Android. Download now and get your first ride free.</p>
+        <div className="download-buttons">
+          <button className="download-btn">App Store</button>
+          <button className="download-btn">Google Play</button>
+        </div>
+      </section>
+
+      <footer>
+        <div className="footer-logo">Rova</div>
+        <div className="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Support</a>
+          <a href="#">Careers</a>
+        </div>
+        <p className="footer-copy">2026 Rova. All rights reserved.</p>
+      </footer>
+
     </div>
-  );
+  )
 }
