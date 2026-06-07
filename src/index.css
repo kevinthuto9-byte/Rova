@@ -3,3 +3,421 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #ffffff;
+  color: #0a0a0a;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #444;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.nav-btn {
+  background: #0a0a0a;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hero {
+  padding: 120px 48px;
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-primary {
+  background: #0a0a0a;
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #0a0a0a;
+  border: 2px solid #0a0a0a;
+  padding: 16px 32px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.stats {
+  padding: 80px 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item h3 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.stat-item p {
+  font-size: 15px;
+  color: #666;
+}
+
+.features {
+  padding: 100px 48px;
+  background: #f9f9f9;
+}
+
+.features h2 {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 56px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.feature-card {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #eee;
+}
+
+.icon {
+  font-size: 32px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.feature-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.how-it-works {
+  padding: 100px 48px;
+}
+
+.how-it-works h2 {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 56px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.step-number {
+  font-size: 64px;
+  font-weight: 800;
+  color: #eee;
+  margin-bottom: 16px;
+  letter-spacing: -2px;
+}
+
+.step h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.step p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.testimonials {
+  padding: 100px 48px;
+  background: #f9f9f9;
+}
+
+.testimonials h2 {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 56px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #eee;
+}
+
+.testimonial-card p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: #0a0a0a;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.testimonial-author strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.testimonial-author span {
+  font-size: 13px;
+  color: #999;
+}
+
+.driver-section {
+  padding: 100px 48px;
+  background: #0a0a0a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 48px;
+}
+
+.driver-content h2 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.driver-content p {
+  font-size: 16px;
+  color: #aaa;
+  margin-bottom: 32px;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+.driver-content .btn-primary {
+  background: white;
+  color: #0a0a0a;
+}
+
+.driver-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.stat h3 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.stat p {
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 4px;
+}
+
+.safety {
+  padding: 100px 48px;
+  background: #0a0a0a;
+  color: white;
+}
+
+.safety-content h2 {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.safety-content > p {
+  font-size: 16px;
+  color: #aaa;
+  margin-bottom: 40px;
+}
+
+.safety-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.safety-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.safety-item span {
+  color: #4ade80;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.safety-item p {
+  font-size: 16px;
+  color: #ccc;
+}
+
+.download {
+  padding: 100px 48px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.download h2 {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.download p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.download-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.download-btn {
+  background: #0a0a0a;
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+footer {
+  padding: 48px;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #666;
+  font-size: 14px;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: #999;
+}
